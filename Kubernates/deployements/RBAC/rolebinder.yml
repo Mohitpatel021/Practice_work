@@ -1,0 +1,12 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: dev-rolebiner
+  namespace: dev
+subject:
+  - kind: User #ServiceAccount
+    name: developer
+    namespace: dev
+roleRef:
+  kind: Role
+  name: dev-tester

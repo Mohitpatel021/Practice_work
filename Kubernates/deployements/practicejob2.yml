@@ -1,0 +1,23 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: log-job
+  namespace: testing
+spec:
+  ttlSecondAfterFinished: 30
+  completions: 2
+  parallelism: 2
+  completionMode: Indexed
+  template:
+    metadata:
+      labels:
+        app: log-job
+    spec:
+      containers:
+        - name: log-job
+          image: busybox
+          command:
+            - sh
+            - -c
+            - echo "Log generated"
+      restartPolicy: Never

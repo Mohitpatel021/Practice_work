@@ -1,0 +1,13 @@
+syntax ="proto3";
+
+package telemetry;
+option java_package="com.example.autotelemetry.proto";
+
+message VehicleTelemetry{
+    string vehicleId=1;
+    string vehiclename=2;
+    int64 speed=3;
+    int64 rpm=4;
+    float fuelLevel=5;
+    float engineTemp=6;
+}

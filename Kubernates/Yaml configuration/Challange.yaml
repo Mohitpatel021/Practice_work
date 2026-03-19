@@ -1,0 +1,44 @@
+# Create a new file 'completed.yaml'
+
+# Sort the items by catagory and by colour
+
+# Add a total at the end
+
+items:
+  - banana
+  - orange
+  - strawberry
+  - broccoli
+  - cabbage
+  - grapes
+  - carrot
+  - tomato
+  - peppers
+  - watermelon
+  - lettuce
+
+fruit:
+  red:
+    - strawberry
+  yellow:
+    - banana
+  orange:
+    - orange
+  green:
+    - grapes
+    - watermelon
+  total: 6
+
+veg:
+  green:
+    - broccoli
+    - cabbage
+    - lettuce
+  red:
+    - tomato
+  yellow:
+    - peppers
+
+
+
+

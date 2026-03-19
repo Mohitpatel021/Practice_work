@@ -1,0 +1,13 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: demo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test_db
+    username: postgress
+    password: Admin
+    driver-class_name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update

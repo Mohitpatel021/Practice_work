@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001
+      author: postgress
+      preConditions:
+        - onFail: MARK_RAN
+        - onFailMessage: "Table is already Created"
+        - dbms:
+            type: postgresql
+        - runningAs:
+            username: postgress
+        - not:
+          - tableExists:
+              tableName: users
+              comment: "User table where we Store user details"
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(225)
+              - column:
+                  name: email
+                  type: VARCHAR(225)
+              - column:
+                  name: address
+                  type: BOOLEAN
+              - column:
+                  name: phoneNumber
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+

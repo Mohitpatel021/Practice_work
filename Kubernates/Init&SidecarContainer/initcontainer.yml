@@ -1,0 +1,27 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: init-test
+
+spec:
+  volumes:
+    - name: shared-mount
+      emptyDir: {}
+  initContainers:
+    - name: init-container
+      image: busybox:latest
+      command: ["sh","-c","echo 'Hello From init container'; sleep 10; echo 'Init done';"]
+  containers:
+    - name: main-container
+      image: busybox:latest
+      command: ["sh","-c","while true; do echo 'Hello from main container' >> /var/logs/app.log; sleep 5; done;"]
+      volumeMounts:
+        - name: shared-mount
+          mountPath: /var/logs
+
+    - name: sidecar-container
+      image: busybox:latest
+      command: ["sh","-c","head /var/logs/app.log"]
+      volumeMounts:
+        - name: shared-mount
+          mountPath: /var/logs

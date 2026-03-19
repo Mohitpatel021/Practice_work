@@ -1,0 +1,26 @@
+kind: CronJon
+apiVersion: batch/v1
+metadata:
+  name: practice-job
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+     spec:
+       template:
+         metadata:
+           name: practice-job
+           labels:
+             app: practice-job
+         spec:
+           containers:
+             - name: log-file
+               image : busybox
+               command:
+                 - sh
+                 - -c
+                 - >
+                   echo "Log file creation started"
+                   FILE= "/logs/logs-$(date+%s).txt"
+                   touch $FILE
+                   echo "Log file created"
+           restartPolicy: OnFailure

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: test-replica
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: mypod # this one should match with the below one
+  template:
+    metadata:
+      labels:
+        app: mypod  #this and above one should match
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "250Mi"
+              cpu: "500m"
+            limits:
+              memory: "500Mi"
+              cpu: "1"
+
+
